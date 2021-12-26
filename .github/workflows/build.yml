@@ -47,7 +47,7 @@ jobs:
         with:
           context: .
           builder: ${{ steps.buildx.outputs.name }}
-          platforms: linux/arm/v7
+          platforms: linux/arm/v7,linux/arm64,linux/amd64
           push: true
           tags: |
             hvalev/monero-node:${{ steps.get_version.outputs.version }}
