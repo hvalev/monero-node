@@ -19,8 +19,9 @@ RUN apt-get install libgtest-dev -y && \
     make -j4 && \
     mv libg* /usr/lib/
 
+#    git config --global http.postBuffer 1048576000 && \
 RUN apt-get install git -y && \
-    git clone -b v${MONERO_V} --recursive https://github.com/monero-project/monero && \
+    git clone -b v${MONERO_V} --recursive --depth=1 https://github.com/monero-project/monero && \
     cd monero && git submodule init && git submodule update && \
     make -j2
 
