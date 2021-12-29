@@ -31,10 +31,10 @@ jobs:
         name: Cache Docker layers
         uses: actions/cache@v2.1.7
         with:
-          path: /tmp/.buildx-cache
-          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          path: /tmp/.buildx-cache-${{ matrix.build.arch }}
+          key: ${{ runner.os }}-${{ matrix.build.arch }}-buildx-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-buildx-
+            ${{ runner.os }}-${{ matrix.build.arch }}-buildx-
       - 
         name: Available platforms
         run: echo ${{ steps.buildx.outputs.platforms }}
@@ -52,10 +52,10 @@ jobs:
           file: ./Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           platforms: ${{ matrix.build.platform }}
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache-new
+          cache-from: type=local,src=/tmp/.buildx-cache-${{ matrix.build.arch }}
+          cache-to: type=local,dest=/tmp/.buildx-cache-new-${{ matrix.build.arch }}
       - 
         name: Move cache
         run: |
-          rm -rf /tmp/.buildx-cache
-          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+          rm -rf /tmp/.buildx-cache-${{ matrix.build.arch }}
+          mv /tmp/.buildx-cache-new-${{ matrix.build.arch }} /tmp/.buildx-cache-${{ matrix.build.arch }}
