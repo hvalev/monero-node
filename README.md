@@ -1,11 +1,11 @@
-# Full configurable ARM64/AMD64 Monero-Node
+# Full configurable ARMv7/ARM64/AMD64 Monero-Node
 
 [![build](https://github.com/hvalev/monero-node/actions/workflows/build.yml/badge.svg)](https://github.com/hvalev/monero-node/actions/workflows/build.yml)
 ![monero%20version](https://img.shields.io/badge/monero%20version-0.17.3.0-green)
 ![Docker Pulls](https://img.shields.io/docker/pulls/hvalev/monero-node)
 ![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/hvalev/monero-node)
 
-This docker image dockerizes a complete monero-node to use on ARM64 and AMD64 devices. It is fully configurable by overriding the containers' [config file](https://github.com/hvalev/monero-node/blob/main/monerod.conf). By default, this container will run a standard full node.
+This docker image dockerizes a complete monero-node to use on ARMv7, ARM64 and AMD64 devices. It is fully configurable by overriding the containers' [config file](https://github.com/hvalev/monero-node/blob/main/monerod.conf). By default, this container will run a standard full node.
 
 
 ## How to run it with docker
