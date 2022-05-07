@@ -40,7 +40,7 @@ jobs:
         run: echo ${{ steps.buildx.outputs.platforms }}
       - 
         name: Login to DockerHub
-        uses: docker/login-action@v1
+        uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUBUNAME }}
           password: ${{ secrets.DOCKERHUBTOKEN }} 
@@ -76,7 +76,7 @@ jobs:
         uses: battila7/get-version-action@v2.3.0
       -
         name: Login to Docker Hub
-        uses: docker/login-action@v1
+        uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUBUNAME }}
           password: ${{ secrets.DOCKERHUBTOKEN }}
