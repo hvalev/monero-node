@@ -43,7 +43,7 @@ jobs:
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUBUNAME }}
-          password: ${{ secrets.DOCKERHUBTOKEN }} 
+          password: ${{ secrets.DOCKERHUBPWD }} 
       - 
         name: Build and push
         uses: docker/build-push-action@v3
@@ -79,7 +79,7 @@ jobs:
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUBUNAME }}
-          password: ${{ secrets.DOCKERHUBTOKEN }}
+          password: ${{ secrets.DOCKERHUBPWD }}
       - 
         name: Create and push versioned multi-architecture image manifest
         env:
