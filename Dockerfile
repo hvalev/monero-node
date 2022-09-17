@@ -1,7 +1,7 @@
 ###########################
 # Builder image
 ###########################
-FROM debian:buster-20220801 AS builder
+FROM debian:buster-20220912 AS builder
 ENV MONERO_V=0.18.1.0
 
 RUN apt-get update && apt-get install -y build-essential cmake pkg-config \
@@ -28,7 +28,7 @@ RUN apt-get install git -y && \
 ###########################
 # Production image
 ###########################
-FROM debian:buster-20220801
+FROM debian:buster-20220912
 ENV MONERO_V=0.18.1.0
 COPY --from=builder /monero/build/Linux/_no_branch_/release/bin/* /
 
