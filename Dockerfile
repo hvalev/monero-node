@@ -30,6 +30,7 @@ RUN apt-get install git -y && \
 ###########################
 FROM debian:buster-20220801
 ENV MONERO_V=0.18.1.1
+
 COPY --from=builder /monero/build/Linux/_no_branch_/release/bin/* /
 
 RUN apt-get update && apt-get install -y \
