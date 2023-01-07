@@ -16,22 +16,19 @@ jobs:
         run: |
           echo "release_tag=$(curl -sL https://api.github.com/repos/monero-project/monero/releases/latest | jq -r ".tag_name" | cut -b 2-)" >> $GITHUB_OUTPUT
           echo "current_tag=$(<monero-version.txt)" >> $GITHUB_OUTPUT
-      - 
-        name: Update Monero
+      - name: Update Monero
         if: steps.monero-version.outputs.current_tag != steps.monero-version.outputs.release_tag
         env:
           RELEASE_TAG: ${{ steps.monero-version.outputs.release_tag }}
         run: |
           # Update current release
           echo ${{ steps.monero-version.outputs.release_tag }} > monero-version.txt
-      - 
-        name: Update Readme.md & Dockerfile
+      - name: Update Readme.md & Dockerfile
         uses: jacobtomlinson/gha-find-replace@master
         with:
           find: ${{ steps.monero-version.outputs.current_tag }}
           replace: ${{ steps.monero-version.outputs.release_tag }}
-      - 
-        name: Create Pull Request
+      - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4.2.3
         with:
           commit-message: Update monero-version to ${{ steps.monero-version.outputs.release_tag }}
