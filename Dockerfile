@@ -2,7 +2,8 @@
 # Builder image
 ###########################
 FROM debian:buster-20240408 AS builder
-ENV MONERO_V=0.18.3.2
+ENV MONERO_V=0.18.3.3
+
 
 RUN apt-get update && apt-get install -y build-essential cmake pkg-config \
     libzmq3-dev libssl-dev libunbound-dev libsodium-dev libunwind8-dev \
@@ -29,7 +30,7 @@ RUN apt-get install git -y && \
 # Production image
 ###########################
 FROM debian:buster-20240408
-ENV MONERO_V=0.18.3.2
+ENV MONERO_V=0.18.3.3
 
 COPY --from=builder /monero/build/Linux/_no_branch_/release/bin/* /
 
