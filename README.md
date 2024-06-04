@@ -10,11 +10,12 @@ This docker image dockerizes a complete monero-node to use on ARMv7, ARM64 and A
 
 ## How to run it with docker
 The container can be started by simply running the following docker run command:
-`docker run -v ~/monero/chain:/data -v ~/monero/log:/log -v ~/monero/monerod.conf:/monerod.conf --name monerod -p 18080:18080 hvalev/monero-node:latest`
+```bash
+docker run -v ~/monero/chain:/data -v ~/monero/log:/log -v ~/monero/monerod.conf:/monerod.conf --name monerod -p 18080:18080 hvalev/monero-node:latest
+```
 
 or alternatively by using the following docker-compose configuration:
-```
-version: "3.6"
+```yaml
 services:
   monerod:
     image: hvalev/monero-node:latest
@@ -34,8 +35,7 @@ The node can be tuned by overriding the containers' configuration file `monerod.
 
 ## Including a dashboard for your monero node
 My [other respository](https://github.com/hvalev/monero-dashboard) contains an automatic build for a monero-node dashboard which binds to the local RPC service and visualizes various details about your running node. The dashboard is created by [jnbarlow](https://github.com/jnbarlow) and can be found in [this repository](https://github.com/jnbarlow/monero-dashboard). If you want to add the dashboard to your docker stack, use the following docker-compose file:
-```
-version: "3.6"
+```yaml
 services:
   monerod:
     image: hvalev/monero-node:latest
