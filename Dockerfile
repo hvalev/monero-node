@@ -1,7 +1,7 @@
 ###########################
 # Builder image
 ###########################
-FROM debian:buster-20240513 AS builder
+FROM debian:buster-20240612 AS builder
 ENV MONERO_V=0.18.3.3
 
 
@@ -29,7 +29,7 @@ RUN apt-get install git -y && \
 ###########################
 # Production image
 ###########################
-FROM debian:buster-20240513
+FROM debian:buster-20240612
 ENV MONERO_V=0.18.3.3
 
 COPY --from=builder /monero/build/Linux/_no_branch_/release/bin/* /
