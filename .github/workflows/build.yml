@@ -8,7 +8,7 @@ on:
 
 jobs:
   buildx:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix: 
         build: [ {arch: armv7, platform: linux/arm/v7}, {arch: arm64, platform: linux/arm64}, {arch: amd64, platform: linux/amd64} ]
@@ -56,7 +56,7 @@ jobs:
 
   collate:
     needs: buildx
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
