@@ -1,7 +1,7 @@
 ###########################
 # Builder image
 ###########################
-FROM debian:buster-20240612 AS builder
+FROM debian:trixie-20250721 AS builder
 ENV MONERO_V=0.18.4.0
 
 
@@ -18,10 +18,16 @@ RUN apt-get install libgtest-dev -y && \
     cd /usr/src/gtest && \
     cmake . && \
     make -j4 && \
-    mv libg* /usr/lib/
+    mv lib/*.a /usr/lib/
 
 #    git config --global http.postBuffer 1048576000 && \
-RUN apt-get install git -y && \
+RUN apt-get update && \
+    apt-get install -y \
+        git \
+        python3 \
+        python3-pip \
+        python3-setuptools \
+        python3-dev && \
     git clone -b v${MONERO_V} --recursive --depth=1 https://github.com/monero-project/monero && \
     cd monero && git submodule init && git submodule update && \
     make -j2
@@ -29,7 +35,7 @@ RUN apt-get install git -y && \
 ###########################
 # Production image
 ###########################
-FROM debian:buster-20240612
+FROM debian:trixie-20250721
 ENV MONERO_V=0.18.4.0
 
 COPY --from=builder /monero/build/Linux/_no_branch_/release/bin/* /
