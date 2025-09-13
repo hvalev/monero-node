@@ -1,7 +1,7 @@
 ###########################
 # Builder image
 ###########################
-FROM debian:trixie-20250811 AS builder
+FROM debian:trixie-20250908 AS builder
 
 ARG MONERO_V=0.18.4.2
 ENV MONERO_V=${MONERO_V}
@@ -32,7 +32,7 @@ RUN make -j$(nproc)
 ###########################
 # Production image
 ###########################
-FROM debian:trixie-20250811
+FROM debian:trixie-20250908
 
 ARG MONERO_V=0.18.4.2
 ENV MONERO_V=${MONERO_V}
