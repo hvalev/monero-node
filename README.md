@@ -1,7 +1,7 @@
 # Full configurable ARMv7/ARM64/AMD64 Monero-Node
 
 [![build](https://github.com/hvalev/monero-node/actions/workflows/build.yml/badge.svg)](https://github.com/hvalev/monero-node/actions/workflows/build.yml)
-![monero%20version](https://img.shields.io/badge/monero%20version-0.18.4.2-green)
+![monero%20version](https://img.shields.io/badge/monero%20version-0.18.4.3-green)
 ![Docker Pulls](https://img.shields.io/docker/pulls/hvalev/monero-node)
 ![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/hvalev/monero-node)
 
