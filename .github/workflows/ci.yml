@@ -44,7 +44,7 @@ jobs:
           password: ${{ secrets.DOCKERHUBPWD }}
 
       - name: Cache Docker layers (GitHub cache backend)
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: ./Dockerfile
