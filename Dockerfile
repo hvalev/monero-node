@@ -3,7 +3,7 @@
 ###########################
 FROM debian:trixie-20260223 AS builder
 
-ARG MONERO_V=0.18.4.5
+ARG MONERO_V=0.18.4.6
 ENV MONERO_V=${MONERO_V}
 
 # Install all build dependencies
@@ -34,7 +34,7 @@ RUN make -j$(nproc)
 ###########################
 FROM debian:trixie-20260223
 
-ARG MONERO_V=0.18.4.5
+ARG MONERO_V=0.18.4.6
 ENV MONERO_V=${MONERO_V}
 
 # Install runtime dependencies only
