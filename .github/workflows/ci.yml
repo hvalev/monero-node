@@ -34,15 +34,10 @@ jobs:
       - name: Set up Docker Buildx
         id: buildx
         uses: docker/setup-buildx-action@v4
-        with:
-          install: true
 
-      - name: Log in to DockerHub
-        uses: docker/login-action@v4
-        with:
-          username: ${{ secrets.DOCKERHUBUNAME }}
-          password: ${{ secrets.DOCKERHUBPWD }}
-
+      # No registry login: this job never pushes, it only builds and warms
+      # the GitHub layer cache. Dependabot runs get no Actions secrets, so a
+      # login step here can only fail. Pushing happens in build.yml on tags.
       - name: Cache Docker layers (GitHub cache backend)
         uses: docker/build-push-action@v7
         with:
