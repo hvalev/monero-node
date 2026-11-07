@@ -26,7 +26,7 @@ jobs:
 
       - name: Get Version
         id: get_version
-        uses: battila7/get-version-action@v2.3.0
+        run: echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v4
@@ -65,7 +65,7 @@ jobs:
 
       - name: Get Version
         id: get_version
-        uses: battila7/get-version-action@v2.3.0
+        run: echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
 
       - name: Login to DockerHub
         uses: docker/login-action@v4

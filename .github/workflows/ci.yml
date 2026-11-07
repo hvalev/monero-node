@@ -24,10 +24,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v7
 
-      - name: Get version
-        id: get_version
-        uses: battila7/get-version-action@v2.3.0
-
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v4
 
